@@ -1,17 +1,11 @@
 #ifndef ALIENGO_ROBOT_HW_H
 #define ALIENGO_ROBOT_HW_H
 
-#include <memory>
-#include <unordered_map>
-
 #include <wb_hardware_interface/wb_robot_hw.h>
 #include <aliengo_hal/aliengo_hal.h>
 
-// Temporal logger
-// #include <ctime>
-#include <fstream>
-#include <chrono>
-
+#include <eigen3/Eigen/Core>
+#include <eigen3/Eigen/Dense>
 
 namespace aliengo2ros
 {
@@ -50,6 +44,12 @@ private:
 
 	/** @brief Executes the robot's startup routine */
 	void startup_routine();
+
+    Eigen::Matrix3d world_R_base_;
+    Eigen::Vector3d world_ang_vel_base_;
+    Eigen::Vector3d world_lin_acc_base_;
+    Eigen::Vector3d vector3d_tmp_;
+    Eigen::Quaterniond quaterniond_tmp_;
 
 };
 

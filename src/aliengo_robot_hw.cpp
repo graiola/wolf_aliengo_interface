@@ -10,9 +10,6 @@
 #include <iomanip>  // put_time
 #include <sstream>  // stringstream
 
-#include <eigen3/Eigen/Core>
-#include <eigen3/Eigen/Dense>
-
 namespace aliengo2ros
 {
 
@@ -114,30 +111,31 @@ void AliengoRobotHw::read()
     // ---------------------------
     // TODO: See if we really need this fake ground truth!!
     //Ground Truth://this is an hack remove it
-    base_orientation_[0] = imu_orientation_[0];
-    base_orientation_[1] = imu_orientation_[1];
-    base_orientation_[2] = imu_orientation_[2];
-    base_orientation_[3] = imu_orientation_[3];
+    quaterniond_tmp_.w() = base_orientation_[0] = imu_orientation_[0];
+    quaterniond_tmp_.x() = base_orientation_[1] = imu_orientation_[1];
+    quaterniond_tmp_.y() = base_orientation_[2] = imu_orientation_[2];
+    quaterniond_tmp_.z() = base_orientation_[3] = imu_orientation_[3];
 
-    Eigen::Affine3d w_R_b= Eigen::Affine3d(Eigen::Quaterniond(base_orientation_[0],base_orientation_[1],base_orientation_[2],base_orientation_[3]));
+    world_R_base_ = quaterniond_tmp_.toRotationMatrix();
 
     // These vars are from imu in the base frame we should rotate to world frame
-    Eigen::Vector3d base_ang_velW, base_ang_accW, base_lin_acc_W;
-    base_ang_velW = w_R_b*Eigen::Vector3d(aliengo_state_.imu.gyroscope[0], aliengo_state_.imu.gyroscope[1], aliengo_state_.imu.gyroscope[2]);
-    // base_ang_accW = w_R_b*Eigen::Vector3d(misc_sensor[B_Add_A], misc_sensor[B_Add_B], misc_sensor[B_Add_G]);
-    base_lin_acc_W = w_R_b*Eigen::Vector3d(aliengo_state_.imu.accelerometer[0], aliengo_state_.imu.accelerometer[1], aliengo_state_.imu.accelerometer[2]);
+    vector3d_tmp_ << static_cast<double>(aliengo_state_.imu.gyroscope[0]),
+                     static_cast<double>(aliengo_state_.imu.gyroscope[1]),
+                     static_cast<double>(aliengo_state_.imu.gyroscope[2]);
+    world_ang_vel_base_ = world_R_base_ * vector3d_tmp_;
 
-    base_ang_vel_[0] = base_ang_velW(0);
-    base_ang_vel_[1] = base_ang_velW(1);
-    base_ang_vel_[2] = base_ang_velW(2);
+    vector3d_tmp_ << static_cast<double>(aliengo_state_.imu.accelerometer[0]),
+                     static_cast<double>(aliengo_state_.imu.accelerometer[1]),
+                     static_cast<double>(aliengo_state_.imu.accelerometer[2]);
+    world_lin_acc_base_ = world_R_base_ * vector3d_tmp_;
 
-    // base_ang_acc_[0] = base_ang_accW(0);
-    // base_ang_acc_[1] = base_ang_accW(1);
-    // base_ang_acc_[2] = base_ang_accW(2);
+    base_ang_vel_[0] = world_ang_vel_base_(0);
+    base_ang_vel_[1] = world_ang_vel_base_(1);
+    base_ang_vel_[2] = world_ang_vel_base_(2);
 
-    base_lin_acc_[0] = base_lin_acc_W(0);
-    base_lin_acc_[1] = base_lin_acc_W(1);
-    base_lin_acc_[2] = base_lin_acc_W(2);
+    base_lin_acc_[0] = world_lin_acc_base_(0);
+    base_lin_acc_[1] = world_lin_acc_base_(1);
+    base_lin_acc_[2] = world_lin_acc_base_(2);
 
 }
 
