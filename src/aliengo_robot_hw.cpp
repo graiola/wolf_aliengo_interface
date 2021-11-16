@@ -53,6 +53,8 @@ void AliengoRobotHw::init()
         return;
     }
 
+    registerInterfaces();
+
     aliengo_interface_.InitCmdData(aliengo_lowcmd_);
     startup_routine();
 }
