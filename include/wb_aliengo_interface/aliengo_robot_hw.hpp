@@ -44,13 +44,6 @@ private:
 	aliengohal::LowLevelInterface aliengo_interface_;
 	aliengohal::LowState aliengo_state_ = {0};
 	aliengohal::LowCmd aliengo_lowcmd_ = {0};
-
-	std::unordered_map<std::string, int> dls_sensors_map_;
-
-	// Some stuff for using the state estimator (PRONTO)
-	const std::string microstrain_pipe_name_ {"MICROSTRAIN_INS"};
-	const std::string joint_state_pipe_name_ {"ALIENGO_STATE"};
-
 	
 	/** @brief Sends a zero command to the robot */
 	void send_zero_command();
