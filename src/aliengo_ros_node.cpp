@@ -1,4 +1,6 @@
 #include <ros/ros.h>
+#include <thread>
+#include <chrono>
 #include "wb_aliengo_interface/aliengo_ros_control.hpp"
 
 static aliengo2ros::AliengoROSControl _ros_control;
@@ -30,6 +32,8 @@ int main(int argc, char**argv)
     // Run the servo loop
     while (ros::ok())
     {
+
+        //auto start = std::chrono::system_clock::now();
         // Updating the ros controller
         _ros_control.update(ros::Time::now(), loop_period);
 
@@ -37,7 +41,15 @@ int main(int argc, char**argv)
         ros::spinOnce();
 
         // Sleep to keep the loop at specified period
-        loop_period.sleep();
+        //loop_period.sleep();
+        std::this_thread::sleep_for( std::chrono::duration<double>(period) );
+
+        //auto end = std::chrono::system_clock::now();
+
+        //double elapsed_seconds = std::chrono::duration_cast<
+        //  std::chrono::duration<double> >(end - start).count();
+
+        //ROS_INFO_STREAM("Period: " <<  elapsed_seconds);
     }
 
     spinner.stop();
