@@ -1,14 +1,4 @@
-#include <chrono>
-#include <iostream>
-#include <iterator>
-#include <string>
-#include <vector>
-
 #include "wb_aliengo_interface/aliengo_robot_hw.hpp"
-
-#include <ctime>  // localtime
-#include <iomanip>  // put_time
-#include <sstream>  // stringstream
 
 namespace aliengo2ros
 {
