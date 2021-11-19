@@ -28,8 +28,8 @@ private:
 	// Aliengo's parameters
     std::array<int, 12> aliengo_motor_idxs_ {{
         aliengohal::FL_0, aliengohal::FL_1, aliengohal::FL_2, // LF
-        aliengohal::FR_0, aliengohal::FR_1, aliengohal::FR_2, // RF
         aliengohal::RL_0, aliengohal::RL_1, aliengohal::RL_2, // LH
+        aliengohal::FR_0, aliengohal::FR_1, aliengohal::FR_2, // RF
         aliengohal::RR_0, aliengohal::RR_1, aliengohal::RR_2, // RH
 	}};
 	
