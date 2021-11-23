@@ -1,7 +1,6 @@
 # Unitree-Legged SDK 
 
-This repository contains a fork of [`unitree_legged_sdk`](https://github.com/unitreerobotics/unitree_legged_sdk) with few changes for use in the DLS lab.
-(for example, [`aliengo_hal`](https://gitlab.advr.iit.it/dls-lab/aliengo_hal))
+This repository contains a fork of [`unitree_legged_sdk`](https://github.com/unitreerobotics/unitree_legged_sdk).
 
 The unitree_legged_sdk is mainly used for communication between PC and Controller board. It can also be used in other PCs with UDP.
 

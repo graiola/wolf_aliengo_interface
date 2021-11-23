@@ -8,7 +8,7 @@ find_package(catkin REQUIRED COMPONENTS
   wb_hardware_interface
 )
       
-add_subdirectory(third_party/aliengo_hal)
+add_subdirectory(aliengo_hal)
 
 catkin_package(
  CATKIN_DEPENDS

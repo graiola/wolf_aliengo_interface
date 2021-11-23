@@ -15,7 +15,7 @@ int main(int argc, char**argv)
     double period;
     if(!nh.getParam("/task_period",period))
     {
-        ROS_ERROR("Task period not available!");
+        ROS_ERROR("Task period not available in the ROS param server!");
         return 1;
     }
 
