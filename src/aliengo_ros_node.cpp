@@ -29,27 +29,40 @@ int main(int argc, char**argv)
     // Update duration of the loop
     ros::Duration loop_period(period);
 
+    // Init
+    auto start = std::chrono::system_clock::now();
+    auto prev_start = start;
+    auto end = start;
+    double elapsed_seconds = 0.0;
+
     // Run the servo loop
     while (ros::ok())
     {
 
-        //auto start = std::chrono::system_clock::now();
+        start = std::chrono::system_clock::now();
+
+        // For debugging
+        //ROS_INFO_STREAM("Period: "<<std::chrono::duration_cast<
+        //                std::chrono::duration<double> >(start - prev_start).count());
+
         // Updating the ros controller
         _ros_control.update(ros::Time::now(), loop_period);
 
         // Keep the ros magic alive
         ros::spinOnce();
 
+        end = std::chrono::system_clock::now();
+
+        elapsed_seconds = std::chrono::duration_cast<
+          std::chrono::duration<double> >(end - start).count();
+
         // Sleep to keep the loop at specified period
-        //loop_period.sleep();
-        std::this_thread::sleep_for( std::chrono::duration<double>(period) );
+        if(elapsed_seconds >= period)
+            continue; // Do not sleep
+        else
+            std::this_thread::sleep_for( std::chrono::duration<double>(period - elapsed_seconds) ); // Sleep the remaining time
 
-        //auto end = std::chrono::system_clock::now();
-
-        //double elapsed_seconds = std::chrono::duration_cast<
-        //  std::chrono::duration<double> >(end - start).count();
-
-        //ROS_INFO_STREAM("Period: " <<  elapsed_seconds);
+        prev_start = start;
     }
 
     spinner.stop();
