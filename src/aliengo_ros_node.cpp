@@ -1,7 +1,7 @@
 #include <ros/ros.h>
 #include <thread>
 #include <chrono>
-#include "wb_aliengo_interface/aliengo_ros_control.hpp"
+#include "wolf_aliengo_interface/aliengo_ros_control.hpp"
 
 static aliengo2ros::AliengoROSControl _ros_control;
 

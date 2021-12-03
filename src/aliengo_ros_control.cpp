@@ -1,4 +1,4 @@
-#include "wb_aliengo_interface/aliengo_ros_control.hpp"
+#include "wolf_aliengo_interface/aliengo_ros_control.hpp"
 
 
 namespace aliengo2ros {

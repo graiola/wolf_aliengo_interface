@@ -1,11 +1,12 @@
 <?xml version="1.0"?>
 <package format="2">
-  <name>wb_aliengo_interface</name>
-  <version>0.0.0</version>
+  <name>wolf_aliengo_interface</name>
+  <version>0.0.1</version>
   <description>
-      The wb_aliengo_interface package
+      Hardware Abstraction Layer for Aliengo robot to be used with WoLF - Whole Whole-body Locomotion Framework
+      available at https://github.com/graiola/wolf-setup
   </description>
-  <maintainer email="gennaro.raiola@gmail.com">graiola</maintainer>
+  <maintainer email="gennaro.raiola@gmail.com">Gennaro Raiola</maintainer>
   <license>BSD</license>
 
   <buildtool_depend>catkin</buildtool_depend>

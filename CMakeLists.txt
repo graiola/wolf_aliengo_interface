@@ -1,5 +1,5 @@
 cmake_minimum_required(VERSION 3.0.2)
-project(wb_aliengo_interface)
+project(wolf_aliengo_interface)
 
 # Find catkin macros and libraries
 find_package(catkin REQUIRED COMPONENTS

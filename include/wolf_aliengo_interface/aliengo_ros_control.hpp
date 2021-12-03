@@ -6,7 +6,7 @@
 #include <ros/ros.h>
 #include <controller_manager/controller_manager.h>
 
-#include "wb_aliengo_interface/aliengo_robot_hw.hpp"
+#include "wolf_aliengo_interface/aliengo_robot_hw.hpp"
 
 
 namespace aliengo2ros {
