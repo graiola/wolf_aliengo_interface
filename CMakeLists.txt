@@ -5,7 +5,7 @@ project(wolf_aliengo_interface)
 find_package(catkin REQUIRED COMPONENTS
   controller_manager
   realtime_tools
-  wb_hardware_interface
+  wolf_hardware_interface
 )
       
 add_subdirectory(aliengo_hal)
@@ -14,7 +14,7 @@ catkin_package(
  CATKIN_DEPENDS
    controller_manager
    realtime_tools
-   wb_hardware_interface
+   wolf_hardware_interface
 )
 
 ##########

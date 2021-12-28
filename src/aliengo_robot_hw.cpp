@@ -34,9 +34,9 @@ void AliengoRobotHw::init()
 {
 
     auto joint_names = loadJointNamesFromSRDF();
-    if(!WbRobotHwInterface::initializeInterfaces(joint_names))
+    if(!WolfRobotHwInterface::initializeInterfaces(joint_names))
     {
-        ROS_ERROR_NAMED(CLASS_NAME,"Initialization of WbRobotHwInterface failed.");
+        ROS_ERROR_NAMED(CLASS_NAME,"Initialization of WolfRobotHwInterface failed.");
         return;
     }
 
