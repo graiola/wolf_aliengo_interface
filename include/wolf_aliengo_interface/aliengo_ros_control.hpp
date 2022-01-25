@@ -19,21 +19,25 @@ public:
 	AliengoROSControl();
 	~AliengoROSControl();
 
+  /** @brief init */
 	void init();
+
+  /** @brief update */
 	void update(const ros::Time& time, const ros::Duration& period);
 
 private:
 
+  /** @brief ROS node handle */
 	std::shared_ptr<ros::NodeHandle> node_handle_;
 	
-	// Aliengo Hardware interface
+  /** @brief Aliengo Hardware interface */
 	std::shared_ptr<AliengoRobotHw> robot_hw_;
 
-	// controller_manager provides the infrastructure to load, unload, start and stop controllers. (E.g. The DLS-supervisor)
+  /** @brief controller_manager provides the infrastructure to load, unload, start and stop controllers */
 	std::shared_ptr<controller_manager::ControllerManager> controller_manager_;
 };
 
-}
+} // namespace
 
 
 #endif
