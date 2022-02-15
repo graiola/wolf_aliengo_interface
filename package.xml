@@ -7,7 +7,8 @@
       available at https://github.com/graiola/wolf-setup
   </description>
   <maintainer email="gennaro.raiola@gmail.com">Gennaro Raiola</maintainer>
-  <license>BSD</license>
+  <author>Gennaro Raiola</author>
+  <license>GNU General Public License v3.0</license>
 
   <buildtool_depend>catkin</buildtool_depend>
 
