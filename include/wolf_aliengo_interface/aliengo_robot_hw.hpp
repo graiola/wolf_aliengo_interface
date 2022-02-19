@@ -1,5 +1,5 @@
 /*
- * Copyright (C) 2022 GoDog
+ * Copyright (C) 2022 multidof
  * Author: Gennaro Raiola
  * email:  gennaro.raiola@gmail.com
  *
