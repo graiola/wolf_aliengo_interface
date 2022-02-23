@@ -1,5 +1,5 @@
 /*
- * Copyright (C) 2022 multidof
+ * Copyright (C) 2022 Gennaro Raiola
  * Author: Gennaro Raiola
  * email:  gennaro.raiola@gmail.com
  *
@@ -16,7 +16,6 @@
  * You should have received a copy of the GNU Lesser General Public License
  * along with this program. If not, see <http://www.gnu.org/licenses/>
 */
-
 #ifndef ALIENGO_ROS_CONTROL_H
 #define ALIENGO_ROS_CONTROL_H
 

@@ -1,5 +1,5 @@
 /*
- * Copyright (C) 2022 multidof
+ * Copyright (C) 2022 Gennaro Raiola
  * Author: Gennaro Raiola
  * email:  gennaro.raiola@gmail.com
  *
