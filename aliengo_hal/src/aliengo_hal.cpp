@@ -42,7 +42,7 @@ void LowLevelInterface::SendLowCmd(LowCmd& motorcmd)
     // Safety
     safe_.PositionLimit(motorcmd);
     // safe.PowerProtect(motorcmd, lowstate_, 1); // 3rd argument is the input factor:1~10. Means 10%~100% power limit. If you are new, then use 1; if you are familiar, then can try bigger number or even comment this function. */
-    safe_.PowerProtect(motorcmd, lowstate_, 5); // 3rd argument is the input factor:1~10. Means 10%~100% power limit. If you are new, then use 1; if you are familiar, then can try bigger number or even comment this function. */
+    safe_.PowerProtect(motorcmd, lowstate_, 10); // 3rd argument is the input factor:1~10. Means 10%~100% power limit. If you are new, then use 1; if you are familiar, then can try bigger number or even comment this function. */
 
     // safe.PositionProtect(motorcmd, lowstate_, 0.087); // TODO: This throws an error. Define a better limit?. Default limit is 5 degree
 
