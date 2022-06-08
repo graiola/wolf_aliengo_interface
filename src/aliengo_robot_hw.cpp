@@ -38,6 +38,7 @@ int64_t utime_now() {
 
 AliengoRobotHw::AliengoRobotHw()
 {
+
     robot_name_ = "aliengo";
 }
 
@@ -48,6 +49,8 @@ AliengoRobotHw::~AliengoRobotHw()
 
 void AliengoRobotHw::init()
 {
+
+
     // Hardware interfaces: Joints
     auto joint_names = loadJointNamesFromSRDF();
     if(joint_names.size()>0)
@@ -77,6 +80,11 @@ void AliengoRobotHw::init()
 
     aliengo_interface_.InitCmdData(aliengo_lowcmd_);
     startup_routine();
+
+    ros::NodeHandle root_nh;
+    odom_pub_.reset(new realtime_tools::RealtimePublisher<nav_msgs::Odometry>(root_nh,	"/aliengo/ground_truth", 1));
+
+
 }
 
 void AliengoRobotHw::read()
@@ -109,6 +117,22 @@ void AliengoRobotHw::read()
     imu_lin_acc_[0] = static_cast<double>(aliengo_state_.imu.accelerometer[0]);
     imu_lin_acc_[1] = static_cast<double>(aliengo_state_.imu.accelerometer[1]);
     imu_lin_acc_[2] = static_cast<double>(aliengo_state_.imu.accelerometer[2]);
+
+
+    // Publish the IMU data NOTE: missing covariances
+    if(odom_pub_.get() && odom_pub_->trylock())
+    {
+      odom_pub_->msg_.pose.pose.orientation.w         = imu_orientation_[0];
+      odom_pub_->msg_.pose.pose.orientation.x         = imu_orientation_[1];
+      odom_pub_->msg_.pose.pose.orientation.y         = imu_orientation_[2];
+      odom_pub_->msg_.pose.pose.orientation.z         = imu_orientation_[3];
+      odom_pub_->msg_.twist.twist.angular.x    = imu_ang_vel_[0];
+      odom_pub_->msg_.twist.twist.angular.y    = imu_ang_vel_[1];
+      odom_pub_->msg_.twist.twist.angular.z    = imu_ang_vel_[2];
+
+      odom_pub_->msg_.header.stamp = ros::Time::now();
+      odom_pub_->unlockAndPublish();
+    }
 }
 
 void AliengoRobotHw::write()

@@ -25,6 +25,8 @@
 
 #include <eigen3/Eigen/Core>
 #include <eigen3/Eigen/Dense>
+#include <realtime_tools/realtime_publisher.h>
+#include <nav_msgs/Odometry.h>
 
 namespace aliengo2ros
 {
@@ -60,6 +62,10 @@ private:
 
   /** @brief Executes the robot's startup routine */
   void startup_routine();
+
+
+  /** @brief IMU realtime publisher */
+  std::shared_ptr<realtime_tools::RealtimePublisher<nav_msgs::Odometry>> odom_pub_;
 
 };
 
