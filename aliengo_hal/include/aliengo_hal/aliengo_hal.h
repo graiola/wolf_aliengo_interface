@@ -1,5 +1,5 @@
-#ifndef _DLS_ALIENGO_HAL_H_
-#define _DLS_ALIENGO_HAL_H_
+#ifndef _ALIENGO_HAL_H_
+#define _ALIENGO_HAL_H_
 
 #include <array>
 
