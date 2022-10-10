@@ -47,9 +47,10 @@ endif(BUILD_UNITREE_SDK_EXAMPLES)
 # #######
 # INSTALL
 # #######
+
 install(DIRECTORY
-  ${PROJECT_SOURCE_DIR}/include/
-  DESTINATION include
+  ${PROJECT_SOURCE_DIR}/include
+  DESTINATION ${INCLUDE_INSTALL_DIR}
 )
 install(FILES
   ${PROJECT_SOURCE_DIR}/lib/libunitree_legged_sdk_amd64.so
